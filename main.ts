@@ -94,14 +94,40 @@ class CtrlXASettingTab extends PluginSettingTab {
 
 		containerEl.empty();
 
+		containerEl.createEl('h2', { text: 'General Settings' });
+
+		containerEl.createEl('h2', { text: 'Cycle Settings' });
+
 		new Setting(containerEl)
-			.setName('Setting #1')
-			.setDesc('It\'s a secret')
+			.setName('Cycle lists 0')
+			.setDesc('E.g. : "Monday, Tuesday, Wednesday,...')
 			.addText(text => text
-				.setPlaceholder('Enter your secret')
-				.setValue(this.plugin.settings.mySetting)
+				.setPlaceholder('Monday,...')
+				.setValue(this.plugin.settings.mySetting[0].join(","))
 				.onChange(async (value) => {
-					this.plugin.settings.mySetting = value;
+					this.plugin.settings.mySetting[0] = value.split(",");
+					await this.plugin.saveSettings();
+				}));
+
+		new Setting(containerEl)
+			.setName('Cycle lists 1')
+			.setDesc('E.g. : "Monday, Tuesday, Wednesday,...')
+			.addText(text => text
+				.setPlaceholder('Monday,...')
+				.setValue(this.plugin.settings.mySetting[1].join(","))
+				.onChange(async (value) => {
+					this.plugin.settings.mySetting[1] = value.split(",");
+					await this.plugin.saveSettings();
+				}));
+
+		new Setting(containerEl)
+			.setName('Cycle lists 2')
+			.setDesc('E.g. : "Monday, Tuesday, Wednesday,...')
+			.addText(text => text
+				.setPlaceholder('Monday,...')
+				.setValue(this.plugin.settings.mySetting[2].join(","))
+				.onChange(async (value) => {
+					this.plugin.settings.mySetting[2] = value.split(",");
 					await this.plugin.saveSettings();
 				}));
 	}
