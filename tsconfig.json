@@ -9,6 +9,11 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "importHelpers": true,
+
+    // Because we'll be using babel: ensure that Babel can safely transpile
+    // files in the TypeScript project.
+    //
+    // https://babeljs.io/docs/en/babel-plugin-transform-typescript/#caveats
     "isolatedModules": true,
 	"strictNullChecks": true,
     "lib": [
