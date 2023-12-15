@@ -3,7 +3,7 @@ import { findCycle } from './cycle'
 describe('findCycle function', () => {
   it('should return the next word in the cycle when going up', () => {
     expect(findCycle('Lundi', 1)).toBe('Mardi');
-    expect(findCycle('vendredi', 1)).toBe('Samedi');
+    expect(findCycle('Vendredi', 1)).toBe('Samedi');
     expect(findCycle('Sunday', 1)).toBe('Monday');
   });
 
