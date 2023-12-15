@@ -10,18 +10,13 @@
 * @param parDirection: 1 for going up, -1 for going down
 * @return next word in cycle
 */
-export function findCycle(parCurWord: string, parDirection: number): string {
-	let cycles: string[][] = [
-		["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"],
-		["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"],
-		["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-	];
+export function findCycle(parCurWord: string, parDirection: number, parCycles: string[][]): string {
 	let curCycle: string[];
 	let curCycleIndex: number;
 	let curCycleWordIndex: number;
 
-	for (let i = 0; i < cycles.length; i++) {
-		curCycle = cycles[i];
+	for (let i = 0; i < parCycles.length; i++) {
+		curCycle = parCycles[i];
 		curCycleIndex = curCycle.indexOf(parCurWord);
 		if (curCycleIndex >= 0) {
 			curCycleWordIndex = curCycleIndex + parDirection;
