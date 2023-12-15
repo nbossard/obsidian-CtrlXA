@@ -103,9 +103,9 @@ class CtrlXASettingTab extends PluginSettingTab {
 			.setDesc('E.g. : "Monday, Tuesday, Wednesday,...')
 			.addText(text => text
 				.setPlaceholder('Monday,...')
-				.setValue(this.plugin.settings.mySetting[0].join(","))
+				.setValue(this.plugin.settings.mySetting[0] ? this.plugin.settings.mySetting[0].join(",") : "")
 				.onChange(async (value) => {
-					this.plugin.settings.mySetting[0] = value.split(",");
+					this.plugin.settings.mySetting[0] = value ? value.split(",") : [];
 					await this.plugin.saveSettings();
 				}));
 
@@ -114,9 +114,9 @@ class CtrlXASettingTab extends PluginSettingTab {
 			.setDesc('E.g. : "Monday, Tuesday, Wednesday,...')
 			.addText(text => text
 				.setPlaceholder('Monday,...')
-				.setValue(this.plugin.settings.mySetting[1].join(","))
+				.setValue(this.plugin.settings.mySetting[1] ? this.plugin.settings.mySetting[1].join(",") : "")
 				.onChange(async (value) => {
-					this.plugin.settings.mySetting[1] = value.split(",");
+					this.plugin.settings.mySetting[1] = value ? value.split(",") : [];
 					await this.plugin.saveSettings();
 				}));
 
@@ -125,9 +125,86 @@ class CtrlXASettingTab extends PluginSettingTab {
 			.setDesc('E.g. : "Monday, Tuesday, Wednesday,...')
 			.addText(text => text
 				.setPlaceholder('Monday,...')
-				.setValue(this.plugin.settings.mySetting[2].join(","))
+				.setValue(this.plugin.settings.mySetting[2] ? this.plugin.settings.mySetting[2].join(",") : "")
 				.onChange(async (value) => {
-					this.plugin.settings.mySetting[2] = value.split(",");
+					this.plugin.settings.mySetting[2] = value ? value.split(",") : [];
+					await this.plugin.saveSettings();
+				}));
+
+		new Setting(containerEl)
+			.setName('Cycle lists 3')
+			.setDesc('E.g. : "Monday, Tuesday, Wednesday,...')
+			.addText(text => text
+				.setPlaceholder('Monday,...')
+				.setValue(this.plugin.settings.mySetting[3] ? this.plugin.settings.mySetting[3].join(",") : "")
+				.onChange(async (value) => {
+					this.plugin.settings.mySetting[3] = value ? value.split(",") : [];
+					await this.plugin.saveSettings();
+				}));
+
+		new Setting(containerEl)
+			.setName('Cycle lists 4')
+			.setDesc('E.g. : "Monday, Tuesday, Wednesday,...')
+			.addText(text => text
+				.setPlaceholder('Monday,...')
+				.setValue(this.plugin.settings.mySetting[4] ? this.plugin.settings.mySetting[4].join(",") : "")
+				.onChange(async (value) => {
+					this.plugin.settings.mySetting[4] = value ? value.split(",") : [];
+					await this.plugin.saveSettings();
+				}));
+
+		new Setting(containerEl)
+			.setName('Cycle lists 5')
+			.setDesc('E.g. : "Monday, Tuesday, Wednesday,...')
+			.addText(text => text
+				.setPlaceholder('Monday,...')
+				.setValue(this.plugin.settings.mySetting[5] ? this.plugin.settings.mySetting[5].join(",") : "")
+				.onChange(async (value) => {
+					this.plugin.settings.mySetting[5] = value ? value.split(",") : [];
+					await this.plugin.saveSettings();
+				}));
+
+		new Setting(containerEl)
+			.setName('Cycle lists 6')
+			.setDesc('E.g. : "Monday, Tuesday, Wednesday,...')
+			.addText(text => text
+				.setPlaceholder('Monday,...')
+				.setValue(this.plugin.settings.mySetting[6] ? this.plugin.settings.mySetting[6].join(",") : "")
+				.onChange(async (value) => {
+					this.plugin.settings.mySetting[6] = value ? value.split(",") : [];
+					await this.plugin.saveSettings();
+				}));
+
+		new Setting(containerEl)
+			.setName('Cycle lists 7')
+			.setDesc('E.g. : "Monday, Tuesday, Wednesday,...')
+			.addText(text => text
+				.setPlaceholder('Monday,...')
+				.setValue(this.plugin.settings.mySetting[7] ? this.plugin.settings.mySetting[7].join(",") : "")
+				.onChange(async (value) => {
+					this.plugin.settings.mySetting[7] = value ? value.split(",") : [];
+					await this.plugin.saveSettings();
+				}));
+
+		new Setting(containerEl)
+			.setName('Cycle lists 8')
+			.setDesc('E.g. : "Monday, Tuesday, Wednesday,...')
+			.addText(text => text
+				.setPlaceholder('Monday,...')
+				.setValue(this.plugin.settings.mySetting[8] ? this.plugin.settings.mySetting[8].join(",") : "")
+				.onChange(async (value) => {
+					this.plugin.settings.mySetting[8] = value ? value.split(",") : [];
+					await this.plugin.saveSettings();
+				}));
+
+		new Setting(containerEl)
+			.setName('Cycle lists 9')
+			.setDesc('E.g. : "Monday, Tuesday, Wednesday,...')
+			.addText(text => text
+				.setPlaceholder('Monday,...')
+				.setValue(this.plugin.settings.mySetting[9] ? this.plugin.settings.mySetting[9].join(",") : "")
+				.onChange(async (value) => {
+					this.plugin.settings.mySetting[9] = value ? value.split(",") : [];
 					await this.plugin.saveSettings();
 				}));
 	}
