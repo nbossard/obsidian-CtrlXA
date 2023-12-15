@@ -22,21 +22,15 @@ export default class CtrlXAPlugin extends Plugin {
 			id: 'cycle-up',
 			name: 'Cycle up',
 			editorCallback: (editor: Editor, _view: MarkdownView) => {
+                cycle(editor, 1, this.settings.mySetting);
+			}
+		});
 
-				console.log("Line >" + editor.getLine(editor.getCursor().line) + "<");
-				console.log("Word from >" + (editor.wordAt(editor.getCursor())?.from.ch ?? "") + "<");
-				console.log("Word to >" + (editor.wordAt(editor.getCursor())?.to.ch ?? "") + "<");
-
-				let wordAt = editor.wordAt(editor.getCursor());
-				if (wordAt != null) {
-					let wordToReplace = editor.getRange(wordAt.from, wordAt.to);
-					console.log("Replacing word >" + wordToReplace + "<");
-					let wordNew = findCycle(wordToReplace,1);
-					console.log("New word >" + wordNew + "<");
-					editor.replaceRange(wordNew, wordAt.from, wordAt.to);
-				} else {
-					console.log("No word at cursor, doing nothing");
-				}
+		this.addCommand({
+			id: 'cycle-down',
+			name: 'Cycle down',
+			editorCallback: (editor: Editor, _view: MarkdownView) => {
+                cycle(editor, -1, this.settings.mySetting);
 			}
 		});
 
@@ -66,8 +60,24 @@ export default class CtrlXAPlugin extends Plugin {
 	}
 }
 
+function cycle(parEditor: Editor, parDirection: number, parCycles: string[][]) {
+	console.log("Line >" + parEditor.getLine(parEditor.getCursor().line) + "<");
+	console.log("Word from >" + (parEditor.wordAt(parEditor.getCursor())?.from.ch ?? "") + "<");
+	console.log("Word to >" + (parEditor.wordAt(parEditor.getCursor())?.to.ch ?? "") + "<");
 
-class SampleSettingTab extends PluginSettingTab {
+	let wordAt = parEditor.wordAt(parEditor.getCursor());
+	if (wordAt != null) {
+		let wordToReplace = parEditor.getRange(wordAt.from, wordAt.to);
+		console.log("Replacing word >" + wordToReplace + "<");
+		let wordNew = findCycle(wordToReplace,parDirection, parCycles);
+		console.log("New word >" + wordNew + "<");
+		parEditor.replaceRange(wordNew, wordAt.from, wordAt.to);
+	} else {
+		console.log("No word at cursor, doing nothing");
+	}
+}
+
+class CtrlXASettingTab extends PluginSettingTab {
 	plugin: CtrlXAPlugin;
 
 	constructor(app: App, plugin: CtrlXAPlugin) {
