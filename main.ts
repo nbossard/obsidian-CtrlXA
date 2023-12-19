@@ -1,17 +1,19 @@
 import { App, Editor, MarkdownView,  Plugin, PluginSettingTab, Setting } from 'obsidian';
 import { findCycle } from './cycle';
 
-// Remember to rename these classes and interfaces!
-
 interface CtrlXASettings {
 	mySetting: string[][];
 }
 
 const DEFAULT_SETTINGS: CtrlXASettings = {
 	mySetting: [
-		["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"],
-		["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"],
-		["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+		["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+		["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+		["true", "false"],
+		["yes", "no"],
+		['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'],
+		['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'],
+		['verbose', 'debug', 'info', 'warn', 'error', 'fatal']
 	]
 }
 
@@ -65,9 +67,9 @@ export default class CtrlXAPlugin extends Plugin {
 }
 
 function cycle(parEditor: Editor, parDirection: number, parCycles: string[][]) {
-	console.log("Line >" + parEditor.getLine(parEditor.getCursor().line) + "<");
-	console.log("Word from >" + (parEditor.wordAt(parEditor.getCursor())?.from.ch ?? "") + "<");
-	console.log("Word to >" + (parEditor.wordAt(parEditor.getCursor())?.to.ch ?? "") + "<");
+	// console.log("Line >" + parEditor.getLine(parEditor.getCursor().line) + "<");
+	// console.log("Word from >" + (parEditor.wordAt(parEditor.getCursor())?.from.ch ?? "") + "<");
+	// console.log("Word to >" + (parEditor.wordAt(parEditor.getCursor())?.to.ch ?? "") + "<");
 
 	let wordAt = parEditor.wordAt(parEditor.getCursor());
 	if (wordAt != null) {
@@ -84,9 +86,9 @@ function cycle(parEditor: Editor, parDirection: number, parCycles: string[][]) {
 class CtrlXASettingTab extends PluginSettingTab {
 	plugin: CtrlXAPlugin;
 
-	constructor(app: App, plugin: CtrlXAPlugin) {
-		super(app, plugin);
-		this.plugin = plugin;
+	constructor(parApp: App, parPlugin: CtrlXAPlugin) {
+		super(parApp, parPlugin);
+		this.plugin = parPlugin;
 	}
 
 	display(): void {
