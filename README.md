@@ -2,7 +2,7 @@
 
 Inspired by vim plugin : https://github.com/Konfekt/vim-CtrlXA
 
-This Vim plug-in makes the key bindings <Ctrl-X/A>
+This Obsidian plug-in makes the key bindings <Ctrl-X/A>
 additionally cycle through lists of keywords such as for example:
 
 - Monday/Tuesday/Wednesday/...
