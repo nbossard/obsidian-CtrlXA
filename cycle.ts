@@ -8,6 +8,7 @@
 *
 * @param parCurWord: current word to be replaced
 * @param parDirection: 1 for going up, -1 for going down
+* @param parCycles: array of cycles of words
 * @return next word in cycle
 */
 export function findCycle(parCurWord: string, parDirection: number, parCycles: string[][]): string {
