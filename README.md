@@ -1,6 +1,6 @@
 # Ctrl XA Plugin
 
-Inspired by vim plugin : https://github.com/Konfekt/vim-CtrlXA
+Inspired by vim plugin : <https://github.com/Konfekt/vim-CtrlXA>
 
 This Obsidian plug-in makes the key bindings <Ctrl-X/A>
 additionally cycle through lists of keywords such as for example:
