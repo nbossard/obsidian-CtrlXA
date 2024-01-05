@@ -1,7 +1,7 @@
 {
 	"id": "ctrl-xa",
 	"name": "Ctrl-XA cycle various items",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"minAppVersion": "0.15.0",
 	"description": "Cycle through various items with keyboard shortcuts. Such as days, months, log level,... anything you need.",
 	"author": "Nicolas BOSSARD",
