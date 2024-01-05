@@ -5,6 +5,7 @@ interface CtrlXASettings {
 	mySetting: string[][];
 }
 
+// These are the defaullt settings to inspire user.
 const DEFAULT_SETTINGS: CtrlXASettings = {
 	mySetting: [
 		["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
@@ -23,7 +24,8 @@ export default class CtrlXAPlugin extends Plugin {
 	async onload() {
 		await this.loadSettings();
 
-		// This adds an editor command that can perform some operation on the current editor instance
+		// This adds an editor command to cycle up
+		// e.g. : from "Monday" to "Tuesday", "January" to "February"
 		this.addCommand({
 			id: 'cycle-up',
 			name: 'Cycle up',
@@ -32,6 +34,8 @@ export default class CtrlXAPlugin extends Plugin {
 			}
 		});
 
+		// This adds an editor command to cycle down
+		// e.g. : from "Tuesday" to "Monday"
 		this.addCommand({
 			id: 'cycle-down',
 			name: 'Cycle down',
@@ -41,6 +45,7 @@ export default class CtrlXAPlugin extends Plugin {
 		});
 
 		// This adds a settings tab so the user can configure various aspects of the plugin
+		// especially the lists contents
 		this.addSettingTab(new CtrlXASettingTab(this.app, this));
 	}
 
