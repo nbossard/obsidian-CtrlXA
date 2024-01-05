@@ -22,6 +22,7 @@ export default class CtrlXAPlugin extends Plugin {
 	settings: CtrlXASettings;
 
 	async onload() {
+		console.log('CtrlXA - loading plugin');
 		await this.loadSettings();
 
 		// This adds an editor command to cycle up
@@ -55,6 +56,15 @@ export default class CtrlXAPlugin extends Plugin {
 
 	async loadSettings() {
 		this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+		// trigger spaces in settings.mySetting
+		for (let i = 0; i < this.settings.mySetting.length; i++) {
+			this.settings.mySetting[i] = this.settings.mySetting[i].map(item => item.trim());
+		}
+		// logging settings.mySetting
+		console.log('CtrlXA - settings loaded and trimmed');
+		for (let i = 0; i < this.settings.mySetting.length; i++) {
+			console.log('CtrlXA - settings.mySetting[' + i + '] = ' + this.settings.mySetting[i]);
+		}
 	}
 
 	async saveSettings() {
@@ -70,12 +80,12 @@ function cycle(parEditor: Editor, parDirection: number, parCycles: string[][]) {
 	let wordAt = parEditor.wordAt(parEditor.getCursor());
 	if (wordAt != null) {
 		let wordToReplace = parEditor.getRange(wordAt.from, wordAt.to);
-		console.log("Replacing word >" + wordToReplace + "<");
+		console.log("CtrlXA - Replacing word >" + wordToReplace + "<");
 		let wordNew = findCycle(wordToReplace, parDirection, parCycles);
-		console.log("New word >" + wordNew + "<");
+		console.log("CtrlXA - New word >" + wordNew + "<");
 		parEditor.replaceRange(wordNew, wordAt.from, wordAt.to);
 	} else {
-		console.log("No word at cursor, doing nothing");
+		console.log("CtrlXA - No word at cursor, doing nothing");
 	}
 }
 
@@ -96,28 +106,29 @@ class CtrlXASettingTab extends PluginSettingTab {
 
 		containerEl.createEl('h2', { text: 'Cycle Settings' });
 
-		function createSetting(containerEl : HTMLElement, index : number) {
+		function createSetting(containerEl : HTMLElement, parIndex : number, parPlugin: CtrlXAPlugin) {
 			new Setting(containerEl)
-				.setName( 'Cycle lists ' + index)
+				.setName( 'Cycle lists ' + parIndex)
 				.setDesc('E.g. : "Monday, Tuesday, Wednesday,...')
 				.addText(text => text
 					.setPlaceholder('Monday,...')
-					.setValue(this.plugin.settings.mySetting[index] ? this.plugin.settings.mySetting[index].join(",") : "")
+					.setValue(parPlugin.settings.mySetting[parIndex] ? parPlugin.settings.mySetting[parIndex].join(",") : "")
 					.onChange(async (value) => {
-this.plugin.settings.mySetting[index] = value ? value.split(",").map(item => item.trim()) : [];
-						await this.plugin.saveSettings();
+parPlugin.settings.mySetting[parIndex] = value ? value.split(",").map(item => item.trim()) : [];
+						await parPlugin.saveSettings();
+						console.log('CtrlXA - settings saved');
 					}));
 		}
 
-		createSetting(containerEl, 0);
-		createSetting(containerEl, 1);
-		createSetting(containerEl, 2);
-		createSetting(containerEl, 3);
-		createSetting(containerEl, 4);
-		createSetting(containerEl, 5);
-		createSetting(containerEl, 6);
-		createSetting(containerEl, 7);
-		createSetting(containerEl, 8);
-		createSetting(containerEl, 9);
+		createSetting(containerEl, 0, this.plugin);
+		createSetting(containerEl, 1, this.plugin);
+		createSetting(containerEl, 2, this.plugin);
+		createSetting(containerEl, 3, this.plugin);
+		createSetting(containerEl, 4, this.plugin);
+		createSetting(containerEl, 5, this.plugin);
+		createSetting(containerEl, 6, this.plugin);
+		createSetting(containerEl, 7, this.plugin);
+		createSetting(containerEl, 8, this.plugin);
+		createSetting(containerEl, 9, this.plugin);
 	}
 }

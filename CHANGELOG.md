@@ -7,9 +7,8 @@
 
 ## [1.0.5]
 
-### Changed
+### Fixed
 
+- 2024-01-02 Fixing issue with spaces, improving logs
 - 2024-01-02 improved settings code to make it cleaner
-
-## [1.0.4] - 2024-01-XX - cleaning work
 
