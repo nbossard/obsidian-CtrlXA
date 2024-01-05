@@ -1,4 +1,4 @@
-import { App, Editor, MarkdownView,  Plugin, PluginSettingTab, Setting } from 'obsidian';
+import { App, Editor, MarkdownView, Plugin, PluginSettingTab, Setting } from 'obsidian';
 import { findCycle } from './cycle';
 
 interface CtrlXASettings {
@@ -28,7 +28,7 @@ export default class CtrlXAPlugin extends Plugin {
 			id: 'cycle-up',
 			name: 'Cycle up',
 			editorCallback: (editor: Editor, _view: MarkdownView) => {
-                cycle(editor, 1, this.settings.mySetting);
+				cycle(editor, 1, this.settings.mySetting);
 			}
 		});
 
@@ -36,7 +36,7 @@ export default class CtrlXAPlugin extends Plugin {
 			id: 'cycle-down',
 			name: 'Cycle down',
 			editorCallback: (editor: Editor, _view: MarkdownView) => {
-                cycle(editor, -1, this.settings.mySetting);
+				cycle(editor, -1, this.settings.mySetting);
 			}
 		});
 
@@ -66,7 +66,7 @@ function cycle(parEditor: Editor, parDirection: number, parCycles: string[][]) {
 	if (wordAt != null) {
 		let wordToReplace = parEditor.getRange(wordAt.from, wordAt.to);
 		console.log("Replacing word >" + wordToReplace + "<");
-		let wordNew = findCycle(wordToReplace,parDirection, parCycles);
+		let wordNew = findCycle(wordToReplace, parDirection, parCycles);
 		console.log("New word >" + wordNew + "<");
 		parEditor.replaceRange(wordNew, wordAt.from, wordAt.to);
 	} else {
@@ -83,7 +83,7 @@ class CtrlXASettingTab extends PluginSettingTab {
 	}
 
 	display(): void {
-		const {containerEl} = this;
+		const { containerEl } = this;
 
 		containerEl.empty();
 
