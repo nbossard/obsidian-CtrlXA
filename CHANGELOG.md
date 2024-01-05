@@ -1,0 +1,15 @@
+# Changelog for plugin Ctrl-XA
+
+<!-- vim: set nowrap conceallevel=0: -->
+<!-- Disable warning multiple headers with same content MD024-->
+<!-- Disable too long line MD013 -->
+<!-- markdownlint-disable MD024 MD013 -->
+
+## [1.0.5]
+
+### Changed
+
+- 2024-01-02 improved settings code to make it cleaner
+
+## [1.0.4] - 2024-01-XX - cleaning work
+
