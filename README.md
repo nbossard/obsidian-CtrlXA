@@ -23,3 +23,11 @@ Go to settings/hotkeys, define hotkeys for ctrl-A and ctrl-X, assign them to com
 ## Various
 
 Note: this plugin has been started using <https://github.com/obsidianmd/obsidian-sample-plugin>
+
+## Manual installation
+
+This is to get latest version in development.
+
+Go to the folder containing your vault, then in subfolder ".obsidian/plugins".
+Git clone there the repo : <https://github.com/nbossard/obsidian-CtrlXA>.
+Restart Obsidian.
