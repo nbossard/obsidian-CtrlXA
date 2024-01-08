@@ -4,7 +4,7 @@
 * will find next word in cycle of words
 * will return same word if parCurWord is not found in any cycle
 *
-* @example findCycle("Lundi", 1) will return "Mardi"
+* @example findCycle("Lundi", 1, ...) will return "Mardi"
 *
 * @param parCurWord: current word to be replaced
 * @param parDirection: 1 for going up, -1 for going down
