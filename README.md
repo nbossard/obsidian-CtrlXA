@@ -18,7 +18,7 @@ Install and enable this plugin.
 
 Go to settings of plugin, fill the lists you need.
 
-Go to settings/hotkeys, define hotkeys for ctrl-A and ctrl-X, assign them to commands "Ctrl-XA cycle various items: Cycle up" and "Ctrl-XA cycle various items: Cycle Down"
+Go to settings/hotkeys, define hotkeys for commands "Ctrl-XA cycle various items: Cycle up" and "Ctrl-XA cycle various items: Cycle Down", could be Ctrl-X and Ctrl-A, or anything you want...
 
 ## Various
 
