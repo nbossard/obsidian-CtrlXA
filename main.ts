@@ -110,9 +110,7 @@ class CtrlXASettingTab extends PluginSettingTab {
 
 		containerEl.empty();
 
-		containerEl.createEl('h2', { text: 'General Settings' });
-
-		containerEl.createEl('h2', { text: 'Cycle Settings' });
+		containerEl.createEl('h2', { text: 'Cycle Lists' });
 
 		function createSetting(containerEl : HTMLElement, parIndex : number, parPlugin: CtrlXAPlugin) {
 			new Setting(containerEl)
