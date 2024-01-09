@@ -1,8 +1,13 @@
 import { App, Editor, MarkdownView, Plugin, PluginSettingTab, Setting } from 'obsidian';
 import { findCycle } from './cycle';
+import { Logger, LogLevel } from './logger';
 
 interface CtrlXASettings {
+	// list of cycles of words
 	mySetting: string[][];
+	// logging level for this plugin, default is INFO
+	// possible values are DEBUG, INFO, WARN, ERROR, NONE
+	loggingLevel: string;
 }
 
 // These are the defaullt settings to inspire user.
@@ -15,14 +20,17 @@ const DEFAULT_SETTINGS: CtrlXASettings = {
 		['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'],
 		['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'],
 		['verbose', 'debug', 'info', 'warn', 'error', 'fatal']
-	]
+	],
+	loggingLevel: 'INFO',
 }
+
+const logger= new Logger(LogLevel.INFO);
 
 export default class CtrlXAPlugin extends Plugin {
 	settings: CtrlXASettings;
 
 	async onload() {
-		console.log('CtrlXA - loading plugin');
+		logger.info('CtrlXA - loading plugin');
 		await this.loadSettings();
 
 		// This adds an editor command to cycle up
@@ -61,9 +69,9 @@ export default class CtrlXAPlugin extends Plugin {
 			this.settings.mySetting[i] = this.settings.mySetting[i].map(item => item.trim());
 		}
 		// logging settings.mySetting
-		console.log('CtrlXA - settings loaded and trimmed');
+		logger.info('CtrlXA - settings loaded and trimmed');
 		for (let i = 0; i < this.settings.mySetting.length; i++) {
-			console.log('CtrlXA - settings.mySetting[' + i + '] = ' + this.settings.mySetting[i]);
+			logger.debug('CtrlXA - settings.mySetting[' + i + '] = ' + this.settings.mySetting[i]);
 		}
 	}
 
@@ -73,19 +81,19 @@ export default class CtrlXAPlugin extends Plugin {
 }
 
 function cycle(parEditor: Editor, parDirection: number, parCycles: string[][]) {
-	// console.log("Line >" + parEditor.getLine(parEditor.getCursor().line) + "<");
-	// console.log("Word from >" + (parEditor.wordAt(parEditor.getCursor())?.from.ch ?? "") + "<");
-	// console.log("Word to >" + (parEditor.wordAt(parEditor.getCursor())?.to.ch ?? "") + "<");
+	// logger.debug("Line >" + parEditor.getLine(parEditor.getCursor().line) + "<");
+	// logger.debug("Word from >" + (parEditor.wordAt(parEditor.getCursor())?.from.ch ?? "") + "<");
+	// logger.debug("Word to >" + (parEditor.wordAt(parEditor.getCursor())?.to.ch ?? "") + "<");
 
 	let wordAt = parEditor.wordAt(parEditor.getCursor());
 	if (wordAt != null) {
 		let wordToReplace = parEditor.getRange(wordAt.from, wordAt.to);
-		console.log("CtrlXA - Replacing word >" + wordToReplace + "<");
+		logger.debug("CtrlXA - Replacing word >" + wordToReplace + "<");
 		let wordNew = findCycle(wordToReplace, parDirection, parCycles);
-		console.log("CtrlXA - New word >" + wordNew + "<");
+		logger.debug("CtrlXA - New word >" + wordNew + "<");
 		parEditor.replaceRange(wordNew, wordAt.from, wordAt.to);
 	} else {
-		console.log("CtrlXA - No word at cursor, doing nothing");
+		logger.debug("CtrlXA - No word at cursor, doing nothing");
 	}
 }
 
@@ -116,7 +124,7 @@ class CtrlXASettingTab extends PluginSettingTab {
 					.onChange(async (value) => {
 parPlugin.settings.mySetting[parIndex] = value ? value.split(",").map(item => item.trim()) : [];
 						await parPlugin.saveSettings();
-						console.log('CtrlXA - settings saved');
+						logger.debug('CtrlXA - settings saved');
 					}));
 		}
 
@@ -130,5 +138,24 @@ parPlugin.settings.mySetting[parIndex] = value ? value.split(",").map(item => it
 		createSetting(containerEl, 7, this.plugin);
 		createSetting(containerEl, 8, this.plugin);
 		createSetting(containerEl, 9, this.plugin);
+
+		containerEl.createEl('h2', { text: 'Advanced' });
+
+		new Setting(containerEl)
+			.setName('Logging level')
+			.setDesc('Logging level for this plugin, default is INFO. Choose NONE to disable logging.')
+			.addDropdown(dropdown => dropdown
+				.addOption('DEBUG', 'DEBUG')
+				.addOption('INFO', 'INFO')
+				.addOption('WARN', 'WARN')
+				.addOption('ERROR', 'ERROR')
+				.addOption('NONE', 'NONE')
+				.setValue(this.plugin.settings.loggingLevel)
+				.onChange(async (value) => {
+					this.plugin.settings.loggingLevel = value;
+					await this.plugin.saveSettings();
+					logger.setLogLevel(value);
+					logger.info('settings loglevel saved');
+				}));
 	}
 }
