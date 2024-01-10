@@ -31,3 +31,11 @@ This is to get latest version in development.
 Go to the folder containing your vault, then in subfolder ".obsidian/plugins".
 Git clone there the repo : <https://github.com/nbossard/obsidian-CtrlXA>.
 Restart Obsidian.
+
+## Releasing process
+
+- check content of [changelog.md](./changelog.md) and add release date
+- check content of [versions.json](./versions.json)
+- check **"version"** field in [manifest.json](manifest.json)
+- check **"version"** field in [package.json](package.json)
+- check everyting is saved and commited
