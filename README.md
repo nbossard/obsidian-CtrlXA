@@ -39,3 +39,5 @@ Restart Obsidian.
 - check **"version"** field in [manifest.json](manifest.json)
 - check **"version"** field in [package.json](package.json)
 - check everyting is saved and commited
+- git tag and push
+- bump version number in "changelog.md", "versions.json", "manifest.json", "package.json"

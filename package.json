@@ -1,6 +1,6 @@
 {
 	"name": "obsidian-ctrlxa-plugin",
-	"version": "1.0.6",
+	"version": "1.0.7",
 	"description": "Plugin for Obsidian to easily cycle thought various items",
 	"main": "main.js",
 	"scripts": {
