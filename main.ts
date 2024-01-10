@@ -143,11 +143,11 @@ parPlugin.settings.mySetting[parIndex] = value ? value.split(",").map(item => it
 			.setName('Logging level')
 			.setDesc('Logging level for this plugin, default is INFO. Choose NONE to disable logging.')
 			.addDropdown(dropdown => dropdown
-				.addOption('DEBUG', 'DEBUG')
-				.addOption('INFO', 'INFO')
-				.addOption('WARN', 'WARN')
-				.addOption('ERROR', 'ERROR')
 				.addOption('NONE', 'NONE')
+				.addOption('ERROR', 'ERROR')
+				.addOption('WARN', 'WARN')
+				.addOption('INFO', 'INFO')
+				.addOption('DEBUG', 'DEBUG')
 				.setValue(this.plugin.settings.loggingLevel)
 				.onChange(async (value) => {
 					this.plugin.settings.loggingLevel = value;
