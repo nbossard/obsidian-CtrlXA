@@ -7,6 +7,12 @@ let cycles=	[
 ]
 
 describe('findCycle function', () => {
+  it('should return the next number if current word is a number', () => {
+    expect(findCycle('1', 1, cycles)).toBe('2');
+    expect(findCycle('7', 1, cycles)).toBe('8');
+    expect(findCycle('7', -1, cycles)).toBe('6');
+  });
+
   it('should return the next word in the cycle when going up', () => {
     expect(findCycle('Lundi', 1, cycles)).toBe('Mardi');
     expect(findCycle('Vendredi', 1, cycles)).toBe('Samedi');

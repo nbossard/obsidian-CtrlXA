@@ -16,6 +16,12 @@ export function findCycle(parCurWord: string, parDirection: number, parCycles: s
 	let curCycleIndex: number;
 	let curCycleWordIndex: number;
 
+	// checking if it is a number
+	if (!isNaN(Number(parCurWord))) {
+		return String(Number(parCurWord) + parDirection);
+	}
+
+	// searching in all cycles
 	for (let i = 0; i < parCycles.length; i++) {
 		curCycle = parCycles[i];
 		curCycleIndex = curCycle.indexOf(parCurWord);
