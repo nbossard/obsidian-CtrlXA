@@ -2,8 +2,7 @@
 
 Inspired by vim plugin : <https://github.com/Konfekt/vim-CtrlXA>
 
-This Obsidian plug-in makes the key bindings <Ctrl-X/A>
-additionally cycle through lists of keywords such as for example:
+This Obsidian plug-in allows easy cycle through lists of keywords such as for example:
 
 - Monday/Tuesday/Wednesday/...
 - true/false
@@ -12,13 +11,18 @@ additionally cycle through lists of keywords such as for example:
 - yesterday/today/tomorrow
 - roman numerals I, II, III...
 
+It also automatically increases/decreases numbers.
+
+Coming soon : dates support.s
+
 ## Usage
 
 Install and enable this plugin.
 
 Go to settings of plugin, fill the lists you need.
 
-Go to settings/hotkeys, define hotkeys for commands "Ctrl-XA cycle various items: Cycle up" and "Ctrl-XA cycle various items: Cycle Down", could be Ctrl-X and Ctrl-A, or anything you want...
+Go to settings/hotkeys, define hotkeys for commands *"Ctrl-XA cycle various items: Cycle up"* and *"Ctrl-XA cycle various items: Cycle Down"*,
+could be Ctrl-X and Ctrl-A (like in Vim), or any key you want...
 
 ## Various
 
