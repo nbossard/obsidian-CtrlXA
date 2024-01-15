@@ -1,5 +1,12 @@
 # Ctrl XA Plugin
 
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/nbossard/obsidian-CtrlXA)
+![GitHub Release Date](https://img.shields.io/github/release-date/nbossard/obsidian-CtrlXA)
+![GitHub issues](https://img.shields.io/github/issues/nbossard/obsidian-CtrlXA)
+
+![GitHub all releases](https://img.shields.io/github/downloads/nbossard/obsidian-CtrlXA/total)
+![GitHub](https://img.shields.io/github/license/nbossard/obsidian-CtrlXA)
+
 Inspired by vim plugin : <https://github.com/Konfekt/vim-CtrlXA>
 
 This Obsidian plug-in allows easy cycle through lists of keywords such as for example:
