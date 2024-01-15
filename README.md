@@ -31,6 +31,10 @@ Go to settings of plugin, fill the lists you need.
 Go to settings/hotkeys, define hotkeys for commands *"Ctrl-XA cycle various items: Cycle up"* and *"Ctrl-XA cycle various items: Cycle Down"*,
 could be Ctrl-X and Ctrl-A (like in Vim), or any key you want...
 
+## What's new
+
+Refer to [changelog](./CHANGELOG.mg)
+
 ## Various
 
 Note: this plugin has been started using <https://github.com/obsidianmd/obsidian-sample-plugin>
