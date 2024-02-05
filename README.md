@@ -42,7 +42,7 @@ You are ready to use it:
 
 ## What's new
 
-Refer to [changelog](./CHANGELOG.mg)
+Refer to [changelog](./CHANGELOG.md)
 
 ## Various
 
@@ -64,7 +64,10 @@ Restart Obsidian.
 - check **"version"** field in [package.json](package.json)
 - check everything is saved and commited
 - git tag and push
-- bump version number in "changelog.md", "versions.json", "manifest.json", "package.json"
+- let github actions generate the new draft release <https://github.com/nbossard/obsidian-CtrlXA/actions>
+- go to release page <https://github.com/nbossard/obsidian-CtrlXA/releases>
+  edit latest draft and publish it
+- bump version number in "CHANGELOG.md", "versions.json", "manifest.json", "package.json"
 - save stage and commit
 
 ## Development environment
