@@ -66,3 +66,9 @@ Restart Obsidian.
 - git tag and push
 - bump version number in "changelog.md", "versions.json", "manifest.json", "package.json"
 - save stage and commit
+
+## Development environment
+
+- **open another terminal running `npm run dev`**
+- developped using neovim
+- Plugin obsidian "Hot Reload" also helped a lot <https://github.com/pjeby/hot-reload>
