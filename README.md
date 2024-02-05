@@ -20,7 +20,7 @@ This Obsidian plug-in allows easy cycle through lists of keywords such as for ex
 
 It also automatically increases/decreases numbers.
 
-Coming soon : dates support.s
+Coming soon : dates support.
 
 ## Usage
 
@@ -28,8 +28,17 @@ Install and enable this plugin.
 
 Go to settings of plugin, fill the lists you need.
 
-Go to settings/hotkeys, define hotkeys for commands *"Ctrl-XA cycle various items: Cycle up"* and *"Ctrl-XA cycle various items: Cycle Down"*,
+Go to settings/hotkeys,
+define hotkeys for commands *"Ctrl-XA cycle various items: Cycle up"*
+and *"Ctrl-XA cycle various items: Cycle Down"*,
 could be Ctrl-X and Ctrl-A (like in Vim), or any key you want...
+
+You are ready to use it:
+
+- please input a sentence like *"Will do it on Monday"*
+- place your cursor on "Monday"
+- press hotkey you defined for cycle up.
+- sentence is now *"Will do it on Tuesday"*
 
 ## What's new
 
@@ -56,3 +65,4 @@ Restart Obsidian.
 - check everyting is saved and commited
 - git tag and push
 - bump version number in "changelog.md", "versions.json", "manifest.json", "package.json"
+- save stage and commit
