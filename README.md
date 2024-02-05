@@ -4,7 +4,7 @@
 ![GitHub Release Date](https://img.shields.io/github/release-date/nbossard/obsidian-CtrlXA)
 ![GitHub issues](https://img.shields.io/github/issues/nbossard/obsidian-CtrlXA)
 
-![GitHub all releases](https://img.shields.io/github/downloads/nbossard/obsidian-CtrlXA/total)
+![Obsidian Downloads](https://img.shields.io/badge/dynamic/json?logo=obsidian&color=blue&label=downloads&query=%24%5B%22ctrl-xa%22%5D.downloads&url=https%3A%2F%2Fraw.githubusercontent.com%2Fobsidianmd%2Fobsidian-releases%2Fmaster%2Fcommunity-plugin-stats.json)
 ![GitHub](https://img.shields.io/github/license/nbossard/obsidian-CtrlXA)
 
 Inspired by vim plugin : <https://github.com/Konfekt/vim-CtrlXA>
