@@ -1,6 +1,6 @@
 import { findCycle } from './cycle'
 
-let cycles=	[
+const cycles=	[
 	["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
 	["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"],
 	["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"]
@@ -11,6 +11,12 @@ describe('findCycle function', () => {
     expect(findCycle('1', 1, cycles)).toBe('2');
     expect(findCycle('7', 1, cycles)).toBe('8');
     expect(findCycle('7', -1, cycles)).toBe('6');
+  });
+
+  it ('should keep the prefixing 0 if the current word is a number with a leading 0', () => {
+	expect(findCycle('01', 1, cycles)).toBe('02');
+	expect(findCycle('007', 1, cycles)).toBe('008');
+	expect(findCycle('0000007', -1, cycles)).toBe('0000006');
   });
 
   it('should return the next word in the cycle when going up', () => {

@@ -18,7 +18,13 @@ export function findCycle(parCurWord: string, parDirection: number, parCycles: s
 
 	// checking if it is a number
 	if (!isNaN(Number(parCurWord))) {
-		return String(Number(parCurWord) + parDirection);
+		// it is a number
+		// First store the numbere of leading 0 if any
+		const leadingZero = parCurWord.match(/^0+/);
+		const newValue = String(Number(parCurWord) + parDirection);
+		// Then add the leading 0 back
+		const newValueStr = leadingZero ? leadingZero[0] + newValue : newValue;
+		return newValueStr;
 	}
 
 	// searching in all cycles
