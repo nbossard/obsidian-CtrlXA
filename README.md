@@ -72,6 +72,19 @@ Restart Obsidian.
 
 ## Development environment
 
+### tools
+
 - **open another terminal running `npm run dev`**
 - developped using neovim
 - Plugin obsidian "Hot Reload" also helped a lot <https://github.com/pjeby/hot-reload>
+
+### branches
+
+Apparently Obsidian is checking content of manifest.json on "main" branch to detect for new versions.
+So "main" branch will now contain only releases and work will be done in "develop" branch.
+
+### github actions
+
+This project uses "github actions" to generate (draft) releases out of tags.
+This is configured in file [release.yml](./.github/orkflows/release.yml)
+Refer to documentation: <https://docs.github.com/en/actions>
