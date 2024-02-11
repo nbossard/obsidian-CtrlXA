@@ -7,6 +7,17 @@ const cycles=	[
 ]
 
 describe('findCycle function', () => {
+
+  // --- dates support -------------------
+
+  it('should return the next day if current word is a day', () => {
+	expect(findCycle('2024-02-10', 1, cycles)).toBe('2024-02-11');
+	expect(findCycle('2024-02-28', -1, cycles)).toBe('2024-02-27');
+	expect(findCycle('2024-02-29', 1, cycles)).toBe('2024-03-01');
+  });
+
+  // --- numbers support -------------------
+
   it('should return the next number if current word is a number', () => {
     expect(findCycle('1', 1, cycles)).toBe('2');
     expect(findCycle('7', 1, cycles)).toBe('8');
@@ -18,6 +29,8 @@ describe('findCycle function', () => {
 	expect(findCycle('007', 1, cycles)).toBe('008');
 	expect(findCycle('0000007', -1, cycles)).toBe('0000006');
   });
+
+  // --- lists support -------------------
 
   it('should return the next word in the cycle when going up', () => {
     expect(findCycle('Lundi', 1, cycles)).toBe('Mardi');
