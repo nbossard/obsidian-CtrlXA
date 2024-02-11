@@ -42,7 +42,7 @@ You are ready to use it:
 
 ## What's new
 
-Refer to [changelog](./CHANGELOG.md)
+Refer to [changelog](https://github.com/nbossard/obsidian-CtrlXA/blob/master/CHANGELOG.md)
 
 ## Various
 
