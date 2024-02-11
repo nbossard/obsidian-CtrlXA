@@ -14,23 +14,23 @@ export class Logger {
   }
 
   public setLogLevel(logLevel: string): void {
-	  	switch (logLevel) {
-	  case 'DEBUG':
+    switch (logLevel) {
+      case 'DEBUG':
 		this.logLevel = LogLevel.DEBUG;
 		break;
-	  case 'INFO':
+      case 'INFO':
 		this.logLevel = LogLevel.INFO;
 		break;
-	  case 'WARNING':
+      case 'WARNING':
 		this.logLevel = LogLevel.WARNING;
 		break;
-	  case 'ERROR':
+      case 'ERROR':
 		this.logLevel = LogLevel.ERROR;
 		break;
-	  case 'NONE':
+      case 'NONE':
 		this.logLevel = LogLevel.NONE;
-	    break;
-	  default:
+        break;
+      default:
 		this.logLevel = LogLevel.INFO;
 		break;
 	}
@@ -46,7 +46,7 @@ export class Logger {
   }
 
   private getLogPrefix(): string {
-	  return 'CtrlXA - ';
+    return 'CtrlXA - ';
   }
 
   private getLogLevelPrefix(level: LogLevel): string {

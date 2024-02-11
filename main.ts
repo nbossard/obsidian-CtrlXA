@@ -30,7 +30,7 @@ export default class CtrlXAPlugin extends Plugin {
 	settings: CtrlXASettings;
 
 	async onload() {
-		logger.info('CtrlXA - loading plugin');
+		logger.info('Loading plugin');
 		await this.loadSettings();
 
 		// This adds an editor command to cycle up
@@ -69,9 +69,11 @@ export default class CtrlXAPlugin extends Plugin {
 			this.settings.mySetting[i] = this.settings.mySetting[i].map(item => item.trim());
 		}
 		// logging settings.mySetting
-		logger.info('CtrlXA - settings loaded and trimmed');
+		logger.info('Settings loaded and trimmed');
+		logger.info('Log level is ' + this.settings.loggingLevel);
+		logger.setLogLevel(this.settings.loggingLevel);
 		for (let i = 0; i < this.settings.mySetting.length; i++) {
-			logger.debug('CtrlXA - settings.mySetting[' + i + '] = ' + this.settings.mySetting[i]);
+			logger.debug('settings.mySetting[' + i + '] = ' + this.settings.mySetting[i]);
 		}
 	}
 
@@ -85,15 +87,15 @@ function cycle(parEditor: Editor, parDirection: number, parCycles: string[][]) {
 	// logger.debug("Word from >" + (parEditor.wordAt(parEditor.getCursor())?.from.ch ?? "") + "<");
 	// logger.debug("Word to >" + (parEditor.wordAt(parEditor.getCursor())?.to.ch ?? "") + "<");
 
-	let wordAt = parEditor.wordAt(parEditor.getCursor());
+	const wordAt = parEditor.wordAt(parEditor.getCursor());
 	if (wordAt != null) {
-		let wordToReplace = parEditor.getRange(wordAt.from, wordAt.to);
-		logger.debug("CtrlXA - Replacing word >" + wordToReplace + "<");
-		let wordNew = findCycle(wordToReplace, parDirection, parCycles);
-		logger.debug("CtrlXA - New word >" + wordNew + "<");
+		const wordToReplace = parEditor.getRange(wordAt.from, wordAt.to);
+		logger.debug("Replacing word >" + wordToReplace + "<");
+		const wordNew = findCycle(wordToReplace, parDirection, parCycles);
+		logger.debug("New word >" + wordNew + "<");
 		parEditor.replaceRange(wordNew, wordAt.from, wordAt.to);
 	} else {
-		logger.debug("CtrlXA - No word at cursor, doing nothing");
+		logger.debug("No word at cursor, doing nothing");
 	}
 }
 
@@ -122,7 +124,7 @@ class CtrlXASettingTab extends PluginSettingTab {
 					.onChange(async (value) => {
 parPlugin.settings.mySetting[parIndex] = value ? value.split(",").map(item => item.trim()) : [];
 						await parPlugin.saveSettings();
-						logger.debug('CtrlXA - settings saved');
+						logger.debug('settings saved');
 					}));
 		}
 
