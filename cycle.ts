@@ -16,6 +16,14 @@ export function findCycle(parCurWord: string, parDirection: number, parCycles: s
 	let curCycleIndex: number;
 	let curCycleWordIndex: number;
 
+	// checking if it is a date
+	// format: YYYY-MM-DD
+	if (parCurWord.match(/^\d{4}-\d{2}-\d{2}$/)) {
+		const curDate = new Date(parCurWord);
+		curDate.setDate(curDate.getDate() + parDirection);
+		return curDate.toISOString().slice(0, 10);
+	}
+
 	// checking if it is a number
 	if (!isNaN(Number(parCurWord))) {
 		// it is a number
