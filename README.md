@@ -18,9 +18,7 @@ This Obsidian plug-in allows easy cycle through lists of keywords such as for ex
 - yesterday/today/tomorrow
 - roman numerals I, II, III...
 
-It also automatically increases/decreases numbers.
-
-Coming soon : dates support.
+It also automatically increases/decreases numbers and dates.
 
 ## Usage
 
