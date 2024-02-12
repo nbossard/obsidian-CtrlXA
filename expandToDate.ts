@@ -12,13 +12,15 @@ export type ObjType = {
  * @returns {boolean} - `true` if `parObj.from` and `parObj.to` are modified, `false` otherwise.
  */
 export function tryExpandPosToMachADate(parObj:ObjType):boolean {
-    const date = parObj.curLine.match(/\d{4}-\d{2}-\d{2}/);
-    if (date) {
-        const datePos = parObj.curLine.indexOf(date[0]);
-        if (datePos <= parObj.fromPos && datePos + date[0].length >= parObj.toPos) {
-            parObj.fromPos = datePos;
-            parObj.toPos = datePos + date[0].length;
-            return true;
+    const dates = parObj.curLine.match(/\d{4}-\d{2}-\d{2}/g);
+    if (dates) {
+        for (const date of dates) {
+            const datePos = parObj.curLine.indexOf(date);
+            if (datePos <= parObj.fromPos && datePos + date.length >= parObj.toPos) {
+                parObj.fromPos = datePos;
+                parObj.toPos = datePos + date.length;
+                return true;
+            }
         }
     }
     return false;

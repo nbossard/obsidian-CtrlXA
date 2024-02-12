@@ -3,7 +3,7 @@ import { tryExpandPosToMachADate, ObjType } from './expandToDate';
 describe('tryExpandPosToMachADate', () => {
   it('should return true and modify from and to if pos is on a date', () => {
     const parObj: ObjType = {
-      curLine: 'Lorem ipsum dolor sit amet, 2022-01-01 consectetur adipiscing elit.',
+      curLine: 'Lorem ipsum dolor sit amet, 2022-01-01 consectetur adipiscing elit 2023-04-10.',
       fromPos: 33,
       toPos: 35,
     };
@@ -13,6 +13,20 @@ describe('tryExpandPosToMachADate', () => {
     expect(result).toBe(true);
     expect(parObj.fromPos).toBe(28);
     expect(parObj.toPos).toBe(38);
+  });
+
+  it('should return true and modify from and to if pos is on a second date', () => {
+    const parObj: ObjType = {
+      curLine: 'Lorem ipsum dolor sit amet, 2022-01-01 consectetur adipiscing elit 2023-04-10.',
+      fromPos: 70,
+      toPos: 72,
+    };
+
+    const result = tryExpandPosToMachADate(parObj);
+
+    expect(result).toBe(true);
+    expect(parObj.fromPos).toBe(67);
+    expect(parObj.toPos).toBe(77);
   });
 
   it('should return false and not modify from and to if pos is not on the date', () => {
