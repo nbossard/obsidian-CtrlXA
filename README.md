@@ -79,6 +79,7 @@ Restart Obsidian.
 ### Code principles
 
 - "happy path is left aligned"
+- test as much as possible, using jest.
 
 ### branches
 
