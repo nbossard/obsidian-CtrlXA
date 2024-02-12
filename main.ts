@@ -1,5 +1,6 @@
 import { App, Editor, MarkdownView, Plugin, PluginSettingTab, Setting } from 'obsidian';
 import { findCycle } from './cycle';
+import { ObjType, tryExpandPosToMachADate } from './expandToDate';
 import { Logger, LogLevel } from './logger';
 
 interface CtrlXASettings {
@@ -82,22 +83,47 @@ export default class CtrlXAPlugin extends Plugin {
 	}
 }
 
-function cycle(parEditor: Editor, parDirection: number, parCycles: string[][]) {
-	// logger.debug("Line >" + parEditor.getLine(parEditor.getCursor().line) + "<");
-	// logger.debug("Word from >" + (parEditor.wordAt(parEditor.getCursor())?.from.ch ?? "") + "<");
-	// logger.debug("Word to >" + (parEditor.wordAt(parEditor.getCursor())?.to.ch ?? "") + "<");
 
+function cycle(parEditor: Editor, parDirection: number, parCycles: string[][]) {
+
+	const curLine = parEditor.getLine(parEditor.getCursor().line);
+	const fromPos = parEditor.wordAt(parEditor.getCursor())?.from.ch ?? -1;
+	const toPos = parEditor.wordAt(parEditor.getCursor())?.to.ch ?? -1;
 	const wordAt = parEditor.wordAt(parEditor.getCursor());
-	if (wordAt != null) {
-		const wordToReplace = parEditor.getRange(wordAt.from, wordAt.to);
-		logger.debug("Replacing word >" + wordToReplace + "<");
-		const wordNew = findCycle(wordToReplace, parDirection, parCycles);
-		logger.debug("New word >" + wordNew + "<");
-		parEditor.replaceRange(wordNew, wordAt.from, wordAt.to);
-	} else {
+
+	const obj:ObjType = {
+		curLine,
+		fromPos,
+		toPos,
+	};
+
+	logger.debug("Line >" + curLine + "<");
+	logger.debug("Word from pos >" + fromPos + "<");
+	logger.debug("Word to pos >" + toPos + "<");
+	logger.debug("Word at cursor >" + wordAt + "<");
+
+	if (wordAt == null) {
 		logger.debug("No word at cursor, doing nothing");
+		return;
 	}
+
+	const expanded:bool = tryExpandPosToMachADate(obj)
+	if (expanded) {
+		logger.debug("Selection expanded to match a date");
+		logger.debug("New word from pos >" + obj.fromPos + "<");
+		logger.debug("New word to pos >" + obj.toPos + "<");
+	}
+
+	const wordToReplace = curLine.slice(obj.fromPos, obj.toPos);
+	logger.debug("Replacing word >" + wordToReplace + "<");
+	const wordNew = findCycle(wordToReplace, parDirection, parCycles);
+	logger.debug("New word >" + wordNew + "<");
+
+	parEditor.replaceRange(wordNew,
+			{ line: parEditor.getCursor().line, ch: obj.fromPos },
+			{ line: parEditor.getCursor().line, ch: obj.toPos });
 }
+
 
 class CtrlXASettingTab extends PluginSettingTab {
 	plugin: CtrlXAPlugin;
