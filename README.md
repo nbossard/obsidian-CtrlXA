@@ -76,10 +76,16 @@ Restart Obsidian.
 - developped using neovim
 - Plugin obsidian "Hot Reload" also helped a lot <https://github.com/pjeby/hot-reload>
 
+### Code principles
+
+- "happy path is left aligned"
+
 ### branches
 
-Apparently Obsidian is checking content of manifest.json on "main" branch to detect for new versions.
-So "main" branch will now contain only releases and work will be done in "develop" branch.
+Apparently Obsidian is checking content of manifest.json
+on "main" branch to detect for new versions.
+So "main" branch will now contain only releases
+and work will be done in "develop" branch.
 
 ### github actions
 
