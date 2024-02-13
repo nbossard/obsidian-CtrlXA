@@ -18,9 +18,7 @@ This Obsidian plug-in allows easy cycle through lists of keywords such as for ex
 - yesterday/today/tomorrow
 - roman numerals I, II, III...
 
-It also automatically increases/decreases numbers.
-
-Coming soon : dates support.
+It also automatically increases/decreases numbers and dates.
 
 ## Usage
 
@@ -42,7 +40,7 @@ You are ready to use it:
 
 ## What's new
 
-Refer to [changelog](./CHANGELOG.mg)
+Refer to [changelog](https://github.com/nbossard/obsidian-CtrlXA/blob/master/CHANGELOG.md)
 
 ## Various
 
@@ -64,11 +62,34 @@ Restart Obsidian.
 - check **"version"** field in [package.json](package.json)
 - check everything is saved and commited
 - git tag and push
-- bump version number in "changelog.md", "versions.json", "manifest.json", "package.json"
+- let github actions generate the new draft release <https://github.com/nbossard/obsidian-CtrlXA/actions>
+- go to release page <https://github.com/nbossard/obsidian-CtrlXA/releases>
+  edit latest draft and publish it
+- bump version number in "CHANGELOG.md", "versions.json", "manifest.json", "package.json"
 - save stage and commit
 
 ## Development environment
 
+### tools
+
 - **open another terminal running `npm run dev`**
 - developped using neovim
 - Plugin obsidian "Hot Reload" also helped a lot <https://github.com/pjeby/hot-reload>
+
+### Code principles
+
+- "happy path is left aligned"
+- test as much as possible, using jest.
+
+### branches
+
+Apparently Obsidian is checking content of manifest.json
+on "main" branch to detect for new versions.
+So "main" branch will now contain only releases
+and work will be done in "develop" branch.
+
+### github actions
+
+This project uses "github actions" to generate (draft) releases out of tags.
+This is configured in file [release.yml](./.github/orkflows/release.yml)
+Refer to documentation: <https://docs.github.com/en/actions>
