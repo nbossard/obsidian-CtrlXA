@@ -107,7 +107,7 @@ function cycle(parEditor: Editor, parDirection: number, parCycles: string[][]) {
 		return;
 	}
 
-	const expanded:bool = tryExpandPosToMachADate(obj)
+	const expanded:boolean = tryExpandPosToMachADate(obj)
 	if (expanded) {
 		logger.debug("Selection expanded to match a date");
 		logger.debug("New word from pos >" + obj.fromPos + "<");
