@@ -18,9 +18,7 @@ This Obsidian plug-in allows easy cycle through lists of keywords such as for ex
 - yesterday/today/tomorrow
 - roman numerals I, II, III...
 
-It also automatically increases/decreases numbers.
-
-Coming soon : dates support.
+It also automatically increases/decreases numbers and dates.
 
 ## Usage
 
@@ -78,10 +76,17 @@ Restart Obsidian.
 - developped using neovim
 - Plugin obsidian "Hot Reload" also helped a lot <https://github.com/pjeby/hot-reload>
 
+### Code principles
+
+- "happy path is left aligned"
+- test as much as possible, using jest.
+
 ### branches
 
-Apparently Obsidian is checking content of manifest.json on "main" branch to detect for new versions.
-So "main" branch will now contain only releases and work will be done in "develop" branch.
+Apparently Obsidian is checking content of manifest.json
+on "main" branch to detect for new versions.
+So "main" branch will now contain only releases
+and work will be done in "develop" branch.
 
 ### github actions
 

@@ -7,6 +7,14 @@
 
 ## [1.0.9] - 2024-02-XX
 
+### Added
+
+- adding support of increase/decrease date
+
+### Fixed
+
+- log level was always info
+
 ## [1.0.8] - 2024-02-05
 
 ### Added
