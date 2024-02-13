@@ -5,7 +5,7 @@
 <!-- Disable too long line MD013 -->
 <!-- markdownlint-disable MD024 MD013 -->
 
-## [1.0.9] - 2024-02-XX
+## [1.0.9] - 2024-02-13
 
 ### Added
 
