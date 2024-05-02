@@ -154,16 +154,10 @@ parPlugin.settings.mySetting[parIndex] = value ? value.split(",").map(item => it
 					}));
 		}
 
-		createSetting(containerEl, 0, this.plugin);
-		createSetting(containerEl, 1, this.plugin);
-		createSetting(containerEl, 2, this.plugin);
-		createSetting(containerEl, 3, this.plugin);
-		createSetting(containerEl, 4, this.plugin);
-		createSetting(containerEl, 5, this.plugin);
-		createSetting(containerEl, 6, this.plugin);
-		createSetting(containerEl, 7, this.plugin);
-		createSetting(containerEl, 8, this.plugin);
-		createSetting(containerEl, 9, this.plugin);
+		let i;
+		for (i = 0; i < 10; i++) {
+			createSetting(containerEl, i, this.plugin);
+		}
 
 		containerEl.createEl('h2', { text: 'Advanced' });
 
