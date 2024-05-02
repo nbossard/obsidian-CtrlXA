@@ -11,7 +11,7 @@ interface CtrlXASettings {
 	loggingLevel: string;
 }
 
-// These are the defaullt settings to inspire user.
+// These are the default settings to inspire user.
 const DEFAULT_SETTINGS: CtrlXASettings = {
 	mySetting: [
 		["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
