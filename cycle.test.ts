@@ -1,3 +1,7 @@
+/**
+ * To run this test in vim you can use command ":TestFile" from plugin "vim-test"
+ */
+
 import { findCycle } from './cycle'
 
 const cycles=	[
@@ -11,9 +15,13 @@ describe('findCycle function', () => {
   // --- dates support -------------------
 
   it('should return the next day if current word is a day', () => {
+	expect(findCycle('2024-02-01', 1, cycles)).toBe('2024-02-02');
+	expect(findCycle('2024-02-09', 1, cycles)).toBe('2024-02-10');
+	expect(findCycle('2024-02-10', -1, cycles)).toBe('2024-02-09');
 	expect(findCycle('2024-02-10', 1, cycles)).toBe('2024-02-11');
 	expect(findCycle('2024-02-28', -1, cycles)).toBe('2024-02-27');
 	expect(findCycle('2024-02-29', 1, cycles)).toBe('2024-03-01');
+	expect(findCycle('2024-03-01', -1, cycles)).toBe('2024-02-29');
   });
 
   // --- numbers support -------------------

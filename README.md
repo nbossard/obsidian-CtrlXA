@@ -72,6 +72,7 @@ Restart Obsidian.
 
 ### tools
 
+- **don't forget to npm install**
 - **open another terminal running `npm run dev`**
 - developped using neovim
 - Plugin obsidian "Hot Reload" also helped a lot <https://github.com/pjeby/hot-reload>
