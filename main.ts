@@ -12,8 +12,10 @@ interface CtrlXASettings {
 }
 
 // These are the default settings to inspire user.
+// first list are callouts, see https://help.obsidian.md/Editing+and+formatting/Callouts
 const DEFAULT_SETTINGS: CtrlXASettings = {
 	mySetting: [
+		["note","abstract","info","todo","tip","success","question","warning","failure","danger","bug"],
 		["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
 		["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
 		["true", "false"],
